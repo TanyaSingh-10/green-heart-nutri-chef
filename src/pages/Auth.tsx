@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,6 +15,7 @@ import { AlertCircle } from 'lucide-react';
 import GreenHeartLogo from '@/assets/GreenHeartLogo';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { toast } from "@/hooks/use-toast";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -36,6 +37,17 @@ type SignupFormValues = z.infer<typeof signupSchema>;
 const Auth = () => {
   const { signIn, signUp, error, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<string>("login");
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Set active tab based on URL parameter
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get('tab');
+    if (tab === 'signup') {
+      setActiveTab('signup');
+    }
+  }, [location]);
 
   const loginForm = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -55,13 +67,25 @@ const Auth = () => {
   });
 
   const onLoginSubmit = async (data: LoginFormValues) => {
-    await signIn(data.email, data.password);
+    try {
+      await signIn(data.email, data.password);
+    } catch (err) {
+      console.error("Login error:", err);
+    }
   };
 
   const onSignupSubmit = async (data: SignupFormValues) => {
-    await signUp(data.email, data.password);
-    // Optionally switch to login tab after signup
-    setActiveTab("login");
+    try {
+      await signUp(data.email, data.password);
+      toast({
+        title: "Sign up successful",
+        description: "Please check your email to confirm your account",
+      });
+      // Optionally switch to login tab after signup
+      setActiveTab("login");
+    } catch (err) {
+      console.error("Signup error:", err);
+    }
   };
 
   return (

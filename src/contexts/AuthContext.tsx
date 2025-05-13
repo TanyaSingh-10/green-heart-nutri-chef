@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { AuthState } from '@/types/auth';
-import { useToast } from '@/components/ui/use-toast';
+import { toast } from "@/hooks/use-toast";
 
 interface AuthContextType extends AuthState {
   signUp: (email: string, password: string) => Promise<void>;
@@ -15,7 +15,6 @@ interface AuthContextType extends AuthState {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { toast } = useToast();
   const [state, setState] = useState<AuthState>({
     user: null,
     session: null,
@@ -63,7 +62,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => {
       subscription.unsubscribe();
     };
-  }, [toast]);
+  }, []);
 
   const signUp = async (email: string, password: string) => {
     try {
