@@ -13,9 +13,9 @@ import ContactSection from '../components/home/ContactSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main>
+      <main className="flex-grow">
         <HeroSection />
         <StatsSection />
         <ServicesSection />

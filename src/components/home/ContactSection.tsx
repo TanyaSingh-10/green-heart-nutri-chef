@@ -5,8 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { Mail, Phone, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ContactSection: React.FC = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -31,6 +34,14 @@ const ContactSection: React.FC = () => {
       description: "You've been added to our newsletter.",
     });
     setNewsletter('');
+  };
+
+  const handleBookConsultation = () => {
+    toast({
+      title: "Consultation Request Received",
+      description: "Our team will contact you to schedule your consultation.",
+    });
+    navigate('/auth');
   };
 
   return (
@@ -107,21 +118,33 @@ const ContactSection: React.FC = () => {
               <div className="bg-nutrition-50 rounded-xl p-8 mb-8">
                 <h3 className="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
                 <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Email</p>
-                    <p className="text-gray-700">contact@greenheartnutrition.com</p>
+                  <div className="flex items-start">
+                    <Mail className="h-5 w-5 text-nutrition-600 mt-0.5 mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-1">Email</p>
+                      <p className="text-gray-700">contact@greenheartnutrition.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Phone</p>
-                    <p className="text-gray-700">+1 (555) 123-4567</p>
+                  <div className="flex items-start">
+                    <Phone className="h-5 w-5 text-nutrition-600 mt-0.5 mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-1">Phone</p>
+                      <p className="text-gray-700">+1 (555) 123-4567</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Address</p>
-                    <p className="text-gray-700">123 Wellness Street<br />Healthy City, HC 12345</p>
+                  <div className="flex items-start">
+                    <MapPin className="h-5 w-5 text-nutrition-600 mt-0.5 mr-3 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-1">Address</p>
+                      <p className="text-gray-700">123 Wellness Street<br />Healthy City, HC 12345</p>
+                    </div>
                   </div>
                 </div>
                 <div className="mt-8">
-                  <Button className="w-full bg-nutrition-600 hover:bg-nutrition-700 text-white">
+                  <Button 
+                    className="w-full bg-nutrition-600 hover:bg-nutrition-700 text-white"
+                    onClick={handleBookConsultation}
+                  >
                     Book a Consultation
                   </Button>
                 </div>
@@ -131,7 +154,7 @@ const ContactSection: React.FC = () => {
               <div className="bg-nutrition-600 text-white rounded-xl p-8">
                 <h3 className="text-xl font-semibold mb-4">Subscribe to Our Newsletter</h3>
                 <p className="mb-6">Get the latest nutrition tips, recipes, and updates delivered to your inbox.</p>
-                <form onSubmit={handleNewsletterSubmit}>
+                <form onSubmit={handleNewsletterSubmit} className="space-y-4 md:space-y-0">
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Input
                       type="email"
