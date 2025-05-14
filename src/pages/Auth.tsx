@@ -12,7 +12,6 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from 'lucide-react';
-import GreenHeartLogo from '@/assets/GreenHeartLogo';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { toast } from "@/hooks/use-toast";
@@ -94,13 +93,6 @@ const Auth = () => {
       
       <main className="flex-grow flex items-center justify-center py-16 px-4">
         <div className="w-full max-w-md mx-auto">
-          <div className="flex justify-center mb-8">
-            <div className="flex items-center space-x-2">
-              <GreenHeartLogo className="w-10 h-10" />
-              <span className="font-bold text-2xl text-nutrition-600">GreenHeart</span>
-            </div>
-          </div>
-
           {error && (
             <Alert variant="destructive" className="mb-6">
               <AlertCircle className="h-4 w-4" />
