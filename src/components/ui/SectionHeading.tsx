@@ -18,7 +18,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
     <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
       <p className="section-label">{label}</p>
       <h2 className="section-heading">{heading}</h2>
-      {subheading && <p className="section-subheading">{subheading}</p>}
+      {subheading && <p className="section-subheading mx-auto">{subheading}</p>}
     </div>
   );
 };

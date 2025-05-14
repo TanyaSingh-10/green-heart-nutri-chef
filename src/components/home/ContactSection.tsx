@@ -145,7 +145,7 @@ const ContactSection: React.FC = () => {
                     className="w-full bg-nutrition-600 hover:bg-nutrition-700 text-white"
                     onClick={handleBookConsultation}
                   >
-                    Book a Consultation
+                    Book a Free Consultation
                   </Button>
                 </div>
               </div>
@@ -153,7 +153,7 @@ const ContactSection: React.FC = () => {
               {/* Newsletter */}
               <div className="bg-nutrition-600 text-white rounded-xl p-8">
                 <h3 className="text-xl font-semibold mb-4">Subscribe to Our Newsletter</h3>
-                <p className="mb-6">Get the latest nutrition tips, recipes, and updates delivered to your inbox.</p>
+                <p className="mb-6 text-nutrition-100">Get the latest nutrition tips, recipes, and updates delivered to your inbox.</p>
                 <form onSubmit={handleNewsletterSubmit} className="space-y-4 md:space-y-0">
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Input
@@ -162,7 +162,7 @@ const ContactSection: React.FC = () => {
                       value={newsletter}
                       onChange={(e) => setNewsletter(e.target.value)}
                       required
-                      className="flex-grow bg-nutrition-500 text-white placeholder:text-nutrition-200 border-nutrition-500"
+                      className="flex-grow bg-nutrition-500 text-white placeholder:text-nutrition-100 border-nutrition-500"
                     />
                     <Button 
                       type="submit" 
