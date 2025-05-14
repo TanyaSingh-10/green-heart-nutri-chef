@@ -122,7 +122,7 @@ const ContactSection: React.FC = () => {
                     <Mail className="h-5 w-5 text-nutrition-600 mt-0.5 mr-3 flex-shrink-0" />
                     <div>
                       <p className="text-sm font-medium text-gray-500 mb-1">Email</p>
-                      <p className="text-gray-700">contact@greenheartnutrition.com</p>
+                      <p className="text-gray-700">contact@nutrichef.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -152,8 +152,8 @@ const ContactSection: React.FC = () => {
 
               {/* Newsletter */}
               <div className="bg-nutrition-600 text-white rounded-xl p-8">
-                <h3 className="text-xl font-semibold mb-4">Subscribe to Our Newsletter</h3>
-                <p className="mb-6 text-nutrition-100">Get the latest nutrition tips, recipes, and updates delivered to your inbox.</p>
+                <h3 className="text-xl font-semibold mb-4 font-sans tracking-wide">Subscribe to Our Newsletter</h3>
+                <p className="mb-6 text-white font-medium">Get the latest nutrition tips, recipes, and updates delivered to your inbox.</p>
                 <form onSubmit={handleNewsletterSubmit} className="space-y-4 md:space-y-0">
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Input
@@ -166,7 +166,7 @@ const ContactSection: React.FC = () => {
                     />
                     <Button 
                       type="submit" 
-                      className="bg-white text-nutrition-600 hover:bg-nutrition-100"
+                      className="bg-white text-nutrition-600 hover:bg-nutrition-100 font-medium"
                     >
                       Subscribe
                     </Button>
