@@ -11,6 +11,10 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import Preferences from "./pages/Preferences";
+import RecipeGenerator from "./pages/RecipeGenerator";
+import SavedRecipes from "./pages/SavedRecipes";
+import RecipeDetails from "./pages/RecipeDetails";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +35,26 @@ const App = () => (
             <Route path="/dashboard" element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="/preferences" element={
+              <ProtectedRoute>
+                <Preferences />
+              </ProtectedRoute>
+            } />
+            <Route path="/recipe-generator" element={
+              <ProtectedRoute>
+                <RecipeGenerator />
+              </ProtectedRoute>
+            } />
+            <Route path="/saved-recipes" element={
+              <ProtectedRoute>
+                <SavedRecipes />
+              </ProtectedRoute>
+            } />
+            <Route path="/recipe/:id" element={
+              <ProtectedRoute>
+                <RecipeDetails />
               </ProtectedRoute>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

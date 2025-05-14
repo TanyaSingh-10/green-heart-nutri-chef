@@ -9,6 +9,36 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      nutrition_experts: {
+        Row: {
+          bio: string
+          created_at: string | null
+          id: string
+          image_url: string | null
+          name: string
+          specialization: string
+          title: string
+        }
+        Insert: {
+          bio: string
+          created_at?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          specialization: string
+          title: string
+        }
+        Update: {
+          bio?: string
+          created_at?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          specialization?: string
+          title?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string | null
@@ -39,6 +69,104 @@ export type Database = {
           last_name?: string | null
           phone?: string | null
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      saved_recipes: {
+        Row: {
+          cook_time: number | null
+          created_at: string | null
+          cuisine_type: string | null
+          description: string
+          expert_id: string | null
+          id: string
+          image_url: string | null
+          ingredients: Json
+          instructions: Json
+          nutrition_info: Json | null
+          prep_time: number | null
+          title: string
+          user_id: string
+          youtube_link: string | null
+        }
+        Insert: {
+          cook_time?: number | null
+          created_at?: string | null
+          cuisine_type?: string | null
+          description: string
+          expert_id?: string | null
+          id?: string
+          image_url?: string | null
+          ingredients: Json
+          instructions: Json
+          nutrition_info?: Json | null
+          prep_time?: number | null
+          title: string
+          user_id: string
+          youtube_link?: string | null
+        }
+        Update: {
+          cook_time?: number | null
+          created_at?: string | null
+          cuisine_type?: string | null
+          description?: string
+          expert_id?: string | null
+          id?: string
+          image_url?: string | null
+          ingredients?: Json
+          instructions?: Json
+          nutrition_info?: Json | null
+          prep_time?: number | null
+          title?: string
+          user_id?: string
+          youtube_link?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "saved_recipes_expert_id_fkey"
+            columns: ["expert_id"]
+            isOneToOne: false
+            referencedRelation: "nutrition_experts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_preferences: {
+        Row: {
+          allergies: string[] | null
+          created_at: string | null
+          cuisine_preferences: string[] | null
+          dietary_restrictions: string[] | null
+          favorite_foods: string[] | null
+          health_conditions: string[] | null
+          id: string
+          nutritional_goals: string[] | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          allergies?: string[] | null
+          created_at?: string | null
+          cuisine_preferences?: string[] | null
+          dietary_restrictions?: string[] | null
+          favorite_foods?: string[] | null
+          health_conditions?: string[] | null
+          id?: string
+          nutritional_goals?: string[] | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          allergies?: string[] | null
+          created_at?: string | null
+          cuisine_preferences?: string[] | null
+          dietary_restrictions?: string[] | null
+          favorite_foods?: string[] | null
+          health_conditions?: string[] | null
+          id?: string
+          nutritional_goals?: string[] | null
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
