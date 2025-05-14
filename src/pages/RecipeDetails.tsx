@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -8,7 +7,7 @@ import Footer from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, Clock, ChefHat, ArrowLeft, YouTube } from 'lucide-react';
+import { Loader2, Clock, ChefHat, ArrowLeft, Youtube } from 'lucide-react';
 
 const RecipeDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -202,7 +201,7 @@ const RecipeDetails = () => {
                       rel="noopener noreferrer" 
                       className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
                     >
-                      <YouTube className="h-5 w-5" />
+                      <Youtube className="h-5 w-5" />
                       <span>Watch on YouTube</span>
                     </a>
                   </section>
